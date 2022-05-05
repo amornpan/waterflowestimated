@@ -1,5 +1,20 @@
 # waterflowestimated
 
+## Install android devices
+### Steps for MIUI 9 and Above:
+
+Settings -> Additional Settings -> Developer options ->
+
+    1. Turn off "MIUI optimization" and Restart
+
+    2. Turn On "USB Debugging"
+
+    3. Turn On "Install via USB"
+    MTP(Media Transfer Protocol) is the default mode.
+    Works even in MTP in some cases
+
+    4. Set USB Configuration to Charging
+
 A new Flutter project.
 
 ## Getting Started
