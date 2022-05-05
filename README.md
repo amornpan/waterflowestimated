@@ -18,7 +18,7 @@ Settings -> Additional Settings -> Developer options ->
 
 <b>LetsView</b>
 
-    LetsView is the first tool we recommend for you. This free wireless screen mirroring tool is compatible with multiple platforms including Windows, Mac, Android, and iOS, as well as TV. With a very easy to use interface, this tool allows everyone to enjoy casting and mirroring without connection trouble or problems figuring out how to get started. To mirror Android screen to Mac using LetsView, you can follow the steps below.
+LetsView is the first tool we recommend for you. This free wireless screen mirroring tool is compatible with multiple platforms including Windows, Mac, Android, and iOS, as well as TV. With a very easy to use interface, this tool allows everyone to enjoy casting and mirroring without connection trouble or problems figuring out how to get started. To mirror Android screen to Mac using LetsView, you can follow the steps below.
 
 Install LetsView on your Android and Mac. Connect your Android and Mac to the same internet connection.
 
