@@ -23,7 +23,6 @@ Settings -> Additional Settings -> Developer options ->
 Install LetsView on your Android and Mac. Connect your Android and Mac to the same internet connection.
 
 https://letsview.com/faq/how-to-use-android-letsview.html
-![alt manual](https://webusupload.apowersoft.info/letsview/wp-content/uploads/2019/10/featured-image.jpg)
 
 
 
