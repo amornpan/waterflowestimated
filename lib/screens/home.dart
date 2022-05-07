@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -19,7 +20,7 @@ class _HomeState extends State<Home> {
 
   Widget showAppName() {
     return Text(
-      "ประเมิณอัตราการไหล",
+      "ประเมินอัตราการไหล",
       style: TextStyle(
           fontSize: 30.0,
           color: Colors.lightBlueAccent.shade700,
@@ -41,43 +42,36 @@ class _HomeState extends State<Home> {
       onPressed: () {},
       child: Text("สมัครสมาชิก"),
       style:
-          OutlinedButton.styleFrom(textStyle: const TextStyle(fontSize:  15.0)),
+          OutlinedButton.styleFrom(textStyle: const TextStyle(fontSize: 15.0)),
     );
   }
 
   Widget showButton() {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        signInButton(),
-        SizedBox(
-          width: 10.0,
-        ),
-        signUpButton()
-      ],
+      children: <Widget>[signInButton(), SizedBox(width: 10), signUpButton()],
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            showLogo(),
-            SizedBox(
-              height: 8.0,
+        backgroundColor: Colors.white,
+        body: ColorfulSafeArea(
+          overflowRules: OverflowRules.all(true),
+          
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                showLogo(),
+                SizedBox(height: 10),
+                showAppName(),
+                SizedBox(height: 10),
+                showButton()
+              ],
             ),
-            showAppName(),
-            SizedBox(
-              height: 8.0,
-            ),
-            showButton()
-          ],
-        ),
-      ),
-    ));
+          ),
+        ));
   }
 }
