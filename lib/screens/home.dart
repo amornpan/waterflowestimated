@@ -1,7 +1,6 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
+import 'package:waterflowestimated/screens/signup.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -14,42 +13,75 @@ class _HomeState extends State<Home> {
   //Methods
 
   Widget showLogo() {
-    return Container(
-        width: 120.0, height: 120.0, child: Image.asset("images/logo.png"));
+    return SizedBox(
+        width: 150.0, height: 150.0, child: Image.asset("images/logo.png"));
   }
 
   Widget showAppName() {
     return Text(
-      "ประเมินอัตราการไหล",
+      "Flow Detect",
       style: TextStyle(
-          fontSize: 30.0,
+          fontSize: 25.0,
+          fontWeight: FontWeight.normal,
           color: Colors.lightBlueAccent.shade700,
-          fontFamily: "Kanit"),
+          fontFamily: "Orbitron"),
     );
   }
 
   Widget signInButton() {
     return ElevatedButton(
-      onPressed: () {},
-      child: const Text("เข้าสู่ระบบ"),
-      style:
-          ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 15.0)),
+      onPressed: () {
+        debugPrint('You click Sign in botton');
+      },
+      child: const Text("Sign In"),
+      style: ElevatedButton.styleFrom(
+          fixedSize: const Size(250, 50),
+          shadowColor: Colors.black,
+          elevation: 10,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          primary: const Color.fromRGBO(41, 168, 223, 1),
+          textStyle: const TextStyle(
+            fontStyle: FontStyle.normal,
+            fontSize: 20.0,
+            fontFamily: "Orbitron",
+          )),
     );
   }
 
   Widget signUpButton() {
     return OutlinedButton(
-      onPressed: () {},
-      child: Text("สมัครสมาชิก"),
-      style:
-          OutlinedButton.styleFrom(textStyle: const TextStyle(fontSize: 15.0)),
+      onPressed: () {
+        //print('You click Signup botton');
+
+        MaterialPageRoute materialPageRoute = MaterialPageRoute(
+            builder: (BuildContext context) => const Signup());
+        Navigator.of(context).push(materialPageRoute);
+      },
+      child: const Text("Sign Up"),
+      style: ElevatedButton.styleFrom(
+          primary: Colors.white,
+          shadowColor: Colors.black,
+          elevation: 10,
+          fixedSize: const Size(250, 50),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          textStyle: const TextStyle(
+            fontStyle: FontStyle.normal,
+            fontSize: 20.0,
+            fontFamily: "Orbitron",
+          )),
     );
   }
 
   Widget showButton() {
-    return Row(
+    return Column(
       mainAxisSize: MainAxisSize.min,
-      children: <Widget>[signInButton(), SizedBox(width: 10), signUpButton()],
+      children: <Widget>[
+        signInButton(),
+        const SizedBox(height: 20),
+        signUpButton()
+      ],
     );
   }
 
@@ -58,16 +90,15 @@ class _HomeState extends State<Home> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: ColorfulSafeArea(
-          overflowRules: OverflowRules.all(true),
-          
+          overflowRules: const OverflowRules.all(true),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 showLogo(),
-                SizedBox(height: 10),
+                const SizedBox(height: 20),
                 showAppName(),
-                SizedBox(height: 10),
+                const SizedBox(height: 120),
                 showButton()
               ],
             ),
