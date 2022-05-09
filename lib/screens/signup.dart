@@ -8,11 +8,20 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  // Explicit
+
+  // Method
+  Widget menuButton() {
+    return IconButton(onPressed: () {}, icon: const Icon(Icons.menu));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Sign Up"),
+        title: const Text("สมัครสมาชิก"),
+        actions: <Widget>[menuButton()],
+        backgroundColor: const Color.fromRGBO(41, 168, 223, 1),
       ),
       body: const Text("body"),
     );

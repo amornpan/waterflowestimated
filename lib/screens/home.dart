@@ -18,12 +18,12 @@ class _HomeState extends State<Home> {
   }
 
   Widget showAppName() {
-    return Text(
+    return const Text(
       "Flow Detect",
       style: TextStyle(
           fontSize: 25.0,
           fontWeight: FontWeight.normal,
-          color: Colors.lightBlueAccent.shade700,
+          color: Color.fromRGBO(30, 119, 187, 1),
           fontFamily: "Orbitron"),
     );
   }
@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
       onPressed: () {
         debugPrint('You click Sign in botton');
       },
-      child: const Text("Sign In"),
+      child: const Text("เข้าสู่ระบบ"),
       style: ElevatedButton.styleFrom(
           fixedSize: const Size(250, 50),
           shadowColor: Colors.black,
@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
           primary: const Color.fromRGBO(41, 168, 223, 1),
           textStyle: const TextStyle(
             fontStyle: FontStyle.normal,
-            fontSize: 20.0,
+            fontSize: 21.0,
             fontFamily: "Orbitron",
           )),
     );
@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
             builder: (BuildContext context) => const Signup());
         Navigator.of(context).push(materialPageRoute);
       },
-      child: const Text("Sign Up"),
+      child: const Text("สมัครสมาชิก"),
       style: ElevatedButton.styleFrom(
           primary: Colors.white,
           shadowColor: Colors.black,
@@ -68,8 +68,9 @@ class _HomeState extends State<Home> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           textStyle: const TextStyle(
             fontStyle: FontStyle.normal,
-            fontSize: 20.0,
+            fontSize: 21.0,
             fontFamily: "Orbitron",
+            color: Color.fromRGBO(41, 168, 223, 1),
           )),
     );
   }
@@ -98,7 +99,7 @@ class _HomeState extends State<Home> {
                 showLogo(),
                 const SizedBox(height: 20),
                 showAppName(),
-                const SizedBox(height: 120),
+                const SizedBox(height: 200),
                 showButton()
               ],
             ),
