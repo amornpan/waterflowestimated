@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "519526142401",
+    "project_id": "flowdetect-a4c6b",
+    "storage_bucket": "flowdetect-a4c6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519526142401:android:07af3758efdef668735f40",
+        "android_client_info": {
+          "package_name": "th.or.hii.flowdetect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "519526142401-tep5vvusiu719i9cqfu8aifi30bqnt3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxKQ92GVOFzU3vOIZhW8yRplyuzAOEwkI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "519526142401-tep5vvusiu719i9cqfu8aifi30bqnt3k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

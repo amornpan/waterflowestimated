@@ -10,6 +10,7 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   // Explicit
   final _formKey = GlobalKey<FormState>();
+  late String nameString, emailString, passwordString;
 
   // Method
   Widget menuButton() {
@@ -43,6 +44,9 @@ class _SignupState extends State<Signup> {
           return null;
         }
       },
+      onSaved: (value) {
+        nameString = value!.trim();
+      },
     );
   }
 
@@ -71,6 +75,9 @@ class _SignupState extends State<Signup> {
         } else {
           return null;
         }
+      },
+      onSaved: (value) {
+        emailString = value!.trim();
       },
     );
   }
@@ -102,6 +109,9 @@ class _SignupState extends State<Signup> {
           return null;
         }
       },
+      onSaved: (value) {
+        passwordString = value!.trim();
+      },
     );
   }
 
@@ -111,6 +121,8 @@ class _SignupState extends State<Signup> {
         // debugPrint('You click Sign in botton');
         if (_formKey.currentState!.validate()) {
           _formKey.currentState!.save();
+          debugPrint(
+              'name = $nameString, email = $emailString, password = $passwordString');
         }
       },
       child: const Text("ตกลง"),
