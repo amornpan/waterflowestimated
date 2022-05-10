@@ -9,6 +9,7 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   // Explicit
+  final _formKey = GlobalKey<FormState>();
 
   // Method
   Widget menuButton() {
@@ -18,44 +19,59 @@ class _SignupState extends State<Signup> {
   Widget nameText() {
     return TextFormField(
       keyboardType: TextInputType.name,
-      style: const TextStyle(color: Color.fromRGBO(0, 0, 0, 1), fontSize: 19.0),
+      style: const TextStyle(color: Color.fromRGBO(0, 0, 0, 1), fontSize: 17.0),
       decoration: const InputDecoration(
-          icon: Icon(
-            Icons.person,
-            color: Color.fromARGB(255, 69, 68, 68),
-            size: 44.0,
-          ),
-          labelText: 'ชื่อ - นามสกุล:',
-          labelStyle: TextStyle(
-              color: Color.fromARGB(255, 156, 146, 146),
-              fontSize: 18.0,
-              fontWeight: FontWeight.normal),
-          helperText: 'กรอกข้อมูลเป็นตัวอักษรเท่านั้น!',
-          helperStyle: TextStyle(
-              color: Color.fromRGBO(41, 168, 223, 1),
-              fontStyle: FontStyle.italic)),
+        icon: Icon(
+          Icons.person,
+          color: Color.fromARGB(255, 69, 68, 68),
+          size: 35.0,
+        ),
+        labelText: 'ชื่อ - นามสกุล:',
+        labelStyle: TextStyle(
+            color: Color.fromARGB(255, 156, 146, 146),
+            fontSize: 17.0,
+            fontWeight: FontWeight.normal),
+        helperText: 'กรอกข้อมูลเป็นตัวอักษรเท่านั้น!',
+        helperStyle: TextStyle(
+            color: Color.fromRGBO(41, 168, 223, 1),
+            fontStyle: FontStyle.italic),
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'กรุณาป้อนชื่อ-นามสกุล';
+        } else {
+          return null;
+        }
+      },
     );
   }
 
   Widget emailText() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
-      style: const TextStyle(color: Color.fromRGBO(0, 0, 0, 1), fontSize: 19.0),
+      style: const TextStyle(color: Color.fromRGBO(0, 0, 0, 1), fontSize: 17.0),
       decoration: const InputDecoration(
           icon: Icon(
             Icons.email,
             color: Color.fromARGB(255, 69, 68, 68),
-            size: 44.0,
+            size: 35.0,
           ),
           labelText: 'อีเมลแอดเดรส:',
           labelStyle: TextStyle(
               color: Color.fromARGB(255, 156, 146, 146),
-              fontSize: 18.0,
+              fontSize: 17.0,
               fontWeight: FontWeight.normal),
           helperText: 'กรอกข้อมูลอีเมลของคุณ',
           helperStyle: TextStyle(
               color: Color.fromRGBO(41, 168, 223, 1),
               fontStyle: FontStyle.italic)),
+      validator: (value) {
+        if (!((value!.contains('@')) && (value.contains('.')))) {
+          return 'กรุณากรอกรูปแบบอีเมลให้ถูกต้อง';
+        } else {
+          return null;
+        }
+      },
     );
   }
 
@@ -63,22 +79,53 @@ class _SignupState extends State<Signup> {
     return TextFormField(
       autofocus: false,
       obscureText: true,
-      style: const TextStyle(color: Color.fromRGBO(0, 0, 0, 1), fontSize: 19.0),
+      style: const TextStyle(color: Color.fromRGBO(0, 0, 0, 1), fontSize: 17.0),
       decoration: const InputDecoration(
           icon: Icon(
-            Icons.lock_open,
+            Icons.lock,
             color: Color.fromARGB(255, 69, 68, 68),
-            size: 44.0,
+            size: 35.0,
           ),
-          labelText: 'กำหนดรหัสผ่าน:',
+          labelText: 'กำหนดรหัสผ่านมากกว่า 8 ตัวอักษร:',
           labelStyle: TextStyle(
               color: Color.fromARGB(255, 156, 146, 146),
-              fontSize: 18.0,
+              fontSize: 17.0,
               fontWeight: FontWeight.normal),
           helperText: 'กรอกข้อมูลรหัสผ่านของคุณ',
           helperStyle: TextStyle(
               color: Color.fromRGBO(41, 168, 223, 1),
               fontStyle: FontStyle.italic)),
+      validator: (value) {
+        if (value!.length < 8) {
+          return 'กรุณากรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร';
+        } else {
+          return null;
+        }
+      },
+    );
+  }
+
+  Widget submitButton() {
+    return ElevatedButton(
+      onPressed: () {
+        // debugPrint('You click Sign in botton');
+        if (_formKey.currentState!.validate()) {
+          _formKey.currentState!.save();
+        }
+      },
+      child: const Text("ตกลง"),
+      style: ElevatedButton.styleFrom(
+          fixedSize: const Size(250, 50),
+          shadowColor: Colors.black,
+          elevation: 10,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          primary: const Color.fromRGBO(41, 168, 223, 1),
+          textStyle: const TextStyle(
+            fontStyle: FontStyle.normal,
+            fontSize: 21.0,
+            fontFamily: "Orbitron",
+          )),
     );
   }
 
@@ -90,9 +137,18 @@ class _SignupState extends State<Signup> {
         actions: [menuButton()],
         backgroundColor: const Color.fromRGBO(41, 168, 223, 1),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(40.0),
-        children: [nameText(), emailText(), passwordText()],
+      body: Form(
+        key: _formKey,
+        child: ListView(
+          padding: const EdgeInsets.all(40.0),
+          children: [
+            nameText(),
+            emailText(),
+            passwordText(),
+            const SizedBox(height: 30),
+            submitButton()
+          ],
+        ),
       ),
     );
   }
