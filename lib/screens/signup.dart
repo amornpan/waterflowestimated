@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -121,8 +122,8 @@ class _SignupState extends State<Signup> {
         // debugPrint('You click Sign in botton');
         if (_formKey.currentState!.validate()) {
           _formKey.currentState!.save();
-          debugPrint(
-              'name = $nameString, email = $emailString, password = $passwordString');
+          //debugPrint('name = $nameString, email = $emailString, password = $passwordString');
+          registerThread();
         }
       },
       child: const Text("ตกลง"),
@@ -139,6 +140,20 @@ class _SignupState extends State<Signup> {
             fontFamily: "Orbitron",
           )),
     );
+  }
+
+  Future<void> registerThread() async {
+    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    await firebaseAuth
+        .createUserWithEmailAndPassword(
+            email: emailString, password: passwordString)
+        .then((response) {
+      debugPrint('Register Success');
+    }).catchError((response) {
+      String title = response.code;
+      String message = response.message;
+      debugPrint('title = $title, message = $message');
+    });
   }
 
   @override

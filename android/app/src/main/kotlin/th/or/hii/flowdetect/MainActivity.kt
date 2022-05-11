@@ -1,4 +1,4 @@
-package th.or.hii.waterflowestimated
+package th.or.hii.flowdetect
 
 import io.flutter.embedding.android.FlutterActivity
 
